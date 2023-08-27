@@ -3,35 +3,53 @@ Imports System.Data.SqlClient
 Imports Newtonsoft.Json.Linq
 Imports System.Drawing
 Imports System.IO
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class student_edit_information
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("admin").ConnectionString
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
             displayingdetails()
+            UpdateButtonStates()
         End If
     End Sub
 
+    Private Sub UpdateButtonStates()
+        Dim ds As DataSet = getTable()
+        Dim currentAdmNo As String = Request.QueryString("AdmNo")
+        Dim currentIndex As Integer = -1
+        For i = 0 To ds.Tables(0).Rows.Count - 1
+            If ds.Tables(0).Rows(i).Item("std_Admno") = currentAdmNo Then
+                currentIndex = i
+                Exit For
+            End If
+        Next
+        btnView.Enabled = currentIndex > 0
+        btnUpload.Enabled = currentIndex < ds.Tables(0).Rows.Count - 1
+    End Sub
+
     Protected Sub displayingdetails()
-        studentNameLabel.Text = Session("name")
-        admNoLabel.Text = Session("admission")
-        Dim status = Session("status")
+        Dim fn As String = Request.QueryString("fname")
+        Dim ln As String = Request.QueryString("lname")
+        Dim adm As String = Request.QueryString("AdmNo")
+        Dim cls As String = Request.QueryString("class")
+        studentNameLabel.Text = fn + ln
+        admNoLabel.Text = adm
+        Labelclass.Text = cls
+        Dim status As String = Session("status")
         If status = "Y - Current" Then
             statusLabel.Text = "Active"
         Else
             statusLabel.Text = "Passed Out"
         End If
-        currentClassLabel.Text = Session("class")
         Dim query As String = "SELECT * FROM studentInformation WHERE std_Admno = @std_id"
-        Dim admin As Integer = Session("admission")
         Using connection As New SqlConnection(conn)
             Dim adapter As New SqlDataAdapter(query, connection)
-            adapter.SelectCommand.Parameters.AddWithValue("@std_id", admin)
-
+            adapter.SelectCommand.Parameters.AddWithValue("@std_id", adm)
             Dim table As New DataTable()
             adapter.Fill(table)
-
             If table.Rows.Count > 0 Then
                 Dim row As DataRow = table.Rows(0)
                 Dim std_id As Integer = Convert.ToInt32(row("std_id"))
@@ -149,10 +167,10 @@ Public Class student_edit_information
                 foodAllergies.Text = std_foodAllergies
                 preferredBeverage.SelectedValue = std_preferredBeverage
                 specialInstructions.Text = std_specialInstructions
-                TextBox2.Text = std_docType
-                docNumber.Text = std_docNumber
-                issueDate.Text = std_issueDate.ToString("yyyy-MM-dd")
-                expiryDate.Text = std_expiryDate.ToString("yyyy-MM-dd")
+                'TextBox2.Text = std_docType
+                'docNumber.Text = std_docNumber
+                'issueDate.Text = std_issueDate.ToString("yyyy-MM-dd")
+                'expiryDate.Text = std_expiryDate.ToString("yyyy-MM-dd")
                 PrimaryCtnct.SelectedValue = std_primaryContact
                 Fname.Text = std_primaryFirstName
                 Mname.Text = std_primaryMiddleName
@@ -177,20 +195,13 @@ Public Class student_edit_information
                 'Else
                 '    uploadedImagePreview.Attributes("src") = "path/to/placeholder-image.png"
                 'End If
-
-
-
-
             End If
         End Using
-
-
     End Sub
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs)
         Dim ds As New DataSet()
         Dim tableName As String = "StudentInformationTable"
-
         Using connection As New SqlConnection(conn)
             Dim adapter As New SqlDataAdapter()
             adapter.SelectCommand = New SqlCommand("UpdateStudentInformation", connection)
@@ -242,7 +253,6 @@ Public Class student_edit_information
     Protected Sub Button15_Click(sender As Object, e As EventArgs)
         Dim ds As New DataSet()
         Dim tableName As String = "StudentInformationTable"
-
         Using connection As New SqlConnection(conn)
             Dim adapter As New SqlDataAdapter()
             adapter.SelectCommand = New SqlCommand("UpdateParentInformation", connection)
@@ -274,7 +284,6 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@StandardCourseName", standard.Text)
             adapter.Fill(ds, tableName)
         End Using
-
     End Sub
 
     Protected Sub Button7_Click(sender As Object, e As EventArgs)
@@ -308,7 +317,6 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@FoodAllergies", foodAllergies.Text)
             adapter.SelectCommand.Parameters.AddWithValue("@PreferredBeverage", preferredBeverage.SelectedValue)
             adapter.SelectCommand.Parameters.AddWithValue("@SpecialInstructions", specialInstructions.Text)
-
             adapter.Fill(ds, tableName)
         End Using
     End Sub
@@ -322,33 +330,29 @@ Public Class student_edit_information
                 Dim imageData As Byte() = New Byte(imageSize - 1) {}
                 formFile.PostedFile.InputStream.Read(imageData, 0, imageSize)
                 Dim query As String = "SELECT * FROM studentInformation WHERE std_Admno = @std_id"
-                Dim admin As Integer = Session("admission")
+                Dim admin As Integer = Request.QueryString("AdmNo")
                 Dim ds As New DataSet()
                 Using connection As New SqlConnection(conn)
                     Dim adapter As New SqlDataAdapter(query, connection)
                     adapter.SelectCommand.Parameters.AddWithValue("@std_id", admin)
                     adapter.Fill(ds)
-
                     For i = 0 To ds.Tables(0).Rows.Count - 1
                         ds.Tables(0).Rows(i).Item("stud_photo") = imageData
                     Next
-
                     Dim commandBuilder As New SqlCommandBuilder(adapter)
                     Dim changes As Integer = adapter.Update(ds, ds.Tables(0).ToString())
-
                     If changes > 0 Then
-                        MsgBox("Successfully Updated the Database")
+                        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
                     Else
-                        MsgBox("Facing Some Error On Updating The Data")
+                        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Facing Some Error On Updating The DataBase');", True)
                     End If
-
                     displayingdetails()
                 End Using
             Else
-                MsgBox("Invalid file format. Please upload a valid image file.")
+                ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Invalid file format. Please upload a valid image file.');", True)
             End If
         Else
-            MsgBox("Please choose a file to upload.")
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Please choose a file to upload.');", True)
         End If
     End Sub
 
@@ -373,7 +377,7 @@ Public Class student_edit_information
                 Dim imageData1 As Byte() = New Byte(imageSize - 1) {}
                 FileUpload2.PostedFile.InputStream.Read(imageData1, 0, imageSize1)
                 Dim query As String = "SELECT * FROM studentInformation WHERE std_Admno = @std_id"
-                Dim admin As Integer = Session("admission")
+                Dim admin As Integer = Request.QueryString("AdmNo")
                 Dim ds As New DataSet()
                 Using connection As New SqlConnection(conn)
                     Dim adapter As New SqlDataAdapter(query, connection)
@@ -393,18 +397,74 @@ Public Class student_edit_information
                     Dim commandBuilder As New SqlCommandBuilder(adapter)
                     Dim changes As Integer = adapter.Update(ds, ds.Tables(0).ToString())
                     If changes > 0 Then
-                        MsgBox("Successfully Updated the Database")
+                        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
                     Else
-                        MsgBox("Facing Some Error On Updating The Data")
+                        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Facing Some Error On Updating The DataBase');", True)
                     End If
                     displayingdetails()
                 End Using
             Else
-                MsgBox("Invalid file format. Please upload a valid image file.")
+                ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Invalid file format. Please upload a valid image file.');", True)
             End If
         Else
-            MsgBox("Please choose a file to upload.")
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Please choose a file to upload.');", True)
         End If
     End Sub
+
+
+    Protected Sub btnView_Click1(sender As Object, e As EventArgs)
+        Dim fname As String = Request.QueryString("fname")
+        Dim lname As String = Request.QueryString("lname")
+        Dim adm As String = Request.QueryString("AdmNo")
+
+        Dim classnamesvg As String = Request.QueryString("class")
+
+        Dim ds As DataSet = getTable()
+        For i = ds.Tables(0).Rows.Count - 1 To 0 Step -1
+            If ds.Tables(0).Rows(i).Item("std_Admno") = Request.QueryString("AdmNo") Then
+                If i = 0 Then
+                    btnView.Enabled = False
+                Else
+                    Dim previd As String = ds.Tables(0).Rows(i - 1).Item("std_Admno")
+                    Dim cls As String = ds.Tables(0).Rows(i - 1).Item("std_class")
+                    Dim fme As String = ds.Tables(0).Rows(i - 1).Item("std_FirstName")
+                    Dim lne As String = ds.Tables(0).Rows(i - 1).Item("std_LastName")
+                    Response.Redirect("student_edit_information.aspx?AdmNo=" + previd + "&fname=" + fme + "&lname=" + lne + "&class=" + cls)
+                End If
+            End If
+        Next
+        UpdateButtonStates()
+    End Sub
+
+    Protected Sub btnUpload_Click(sender As Object, e As EventArgs)
+        Dim fname As String = Request.QueryString("fname")
+        Dim lname As String = Request.QueryString("lname")
+        Dim adm As String = Request.QueryString("AdmNo")
+        Dim classnamesvg As String = Request.QueryString("class")
+        Dim ds As DataSet = getTable()
+        For i = 0 To ds.Tables(0).Rows.Count - 1
+            If ds.Tables(0).Rows(i).Item("std_Admno") = Request.QueryString("AdmNo") Then
+                If i + 1 = ds.Tables(0).Rows.Count Then
+                    btnUpload.Enabled = False
+                Else
+                    Dim nextid As String = ds.Tables(0).Rows(i + 1).Item("std_Admno")
+                    Dim cls As String = ds.Tables(0).Rows(i + 1).Item("std_class")
+                    Dim fme As String = ds.Tables(0).Rows(i + 1).Item("std_FirstName")
+                    Dim lne As String = ds.Tables(0).Rows(i + 1).Item("std_LastName")
+                    Response.Redirect("student_edit_information.aspx?AdmNo=" + nextid + "&fname=" + fme + "&lname=" + lne + "&class=" + cls)
+                End If
+            End If
+        Next
+        UpdateButtonStates()
+    End Sub
+
+    Function getTable() As DataSet
+        Dim conn1 As New SqlConnection(conn)
+        Dim cmd As New SqlCommand("select * from studentInformation", conn1)
+        Dim adapter As New SqlDataAdapter(cmd)
+        Dim studentlist As New DataSet()
+        adapter.Fill(studentlist)
+        Return studentlist
+    End Function
 
 End Class

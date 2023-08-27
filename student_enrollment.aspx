@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
     <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <style type="text/css">
         body {
             background-color: #f4f4f4;
@@ -80,9 +82,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container1">
-            <span class="article--viewer v-divider-gfg"></span>General Information
-        </div>
+
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-2 mb-2">
@@ -146,9 +146,12 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Student Name">
                         <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server" CssClass="img-thumbnail rounded-circle" Height="50" Width="50"
+                                ImageUrl='<%# "data:image/jpeg;base64," + Convert.ToBase64String(Eval("stud_photo")) %>' />
                             <asp:Label ID="lblFullName" runat="server" Text='<%# Eval("std_FirstName") & " " & Eval("std_LastName") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
+
                     <asp:BoundField HeaderText="Admission Number" DataField="std_Admno" />
                     <asp:BoundField HeaderText="Class" DataField="std_class" />
                     <asp:BoundField HeaderText="Date Of Joining" DataField="std_doj" DataFormatString="{0:yyyy-MM-dd}" />
@@ -158,14 +161,22 @@
                     <asp:BoundField HeaderText="Effective To" DataField="EffectiveTo" />
                     <asp:TemplateField HeaderText="View">
                         <ItemTemplate>
-                            <asp:LinkButton ID="btnView1" runat="server" OnClick="btnView_Click2" CommandName="View" CommandArgument='<%# Eval("std_applicationno") %>' CssClass="btn-icon">
-                            <i class="fa fa-eye" style="color:red"></i>
+                            <a href='<%# "student_edit_information.aspx?fname=" + Eval("std_FirstName") + "&AdmNo=" + Eval("std_Admno") + "&lname=" + Eval("std_LastName") + "&class=" + Eval("std_class")  %>'>
+                                <i class="fa fa-eye" style="font-size:18px;color:red"></i></a>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="ID Card">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="LinkButton1" OnClick="btnView1_Click" runat="server" CssClass="fa fa-id-card-o" style="color:red">
                             </asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
 
                 </Columns>
             </asp:GridView>
+
+            
+
         </div>
 
 

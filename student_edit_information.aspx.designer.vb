@@ -77,13 +77,13 @@ Partial Public Class student_edit_information
     Protected WithEvents statusLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''currentClassLabel control.
+    '''Labelclass control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents currentClassLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Labelclass As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Admno control.
@@ -212,15 +212,6 @@ Partial Public Class student_edit_information
     Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button4 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button4 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''PrimaryCtnct control.
     '''</summary>
     '''<remarks>
@@ -338,15 +329,6 @@ Partial Public Class student_edit_information
     Protected WithEvents Button13 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button14 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button14 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''formFile control.
     '''</summary>
     '''<remarks>
@@ -372,15 +354,6 @@ Partial Public Class student_edit_information
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Button2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''parentRelation control.
@@ -446,15 +419,6 @@ Partial Public Class student_edit_information
     Protected WithEvents Button15 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button16 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button16 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''siblingName control.
     '''</summary>
     '''<remarks>
@@ -507,15 +471,6 @@ Partial Public Class student_edit_information
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button5 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Button6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button6 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''bloodGroup control.
@@ -581,15 +536,6 @@ Partial Public Class student_edit_information
     Protected WithEvents Button7 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button8 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button8 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''mealPreference control.
     '''</summary>
     '''<remarks>
@@ -635,13 +581,13 @@ Partial Public Class student_edit_information
     Protected WithEvents Button9 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Button10 control.
+    '''GridView1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button10 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents GridView1 As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''TextBox2 control.
@@ -741,13 +687,4 @@ Partial Public Class student_edit_information
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Button11 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Button12 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button12 As Global.System.Web.UI.WebControls.Button
 End Class

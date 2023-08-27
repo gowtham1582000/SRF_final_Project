@@ -16,7 +16,6 @@
     <script> 
         $(function () {
             $("#header").load("/dashboard_header.aspx");
-            $("#options").load("/dashboard_operation.aspx");
         });
 
     </script>
@@ -105,9 +104,7 @@
 <body>
     <div id="header"></div>
     <div class="main-container">
-        <div class="navcontainer">
-            <div id="options"></div>
-        </div>
+      
         <div class="main">
             <div class="report-container">
                 <div class="report-header">
@@ -121,33 +118,29 @@
                             <div class="cards card-1">
                                 <img src="https://img.icons8.com/dusk/50/000000/domain.png" />
                                 <h2>Student Details</h2>
-                                <p>Click here to view & manage your website.</p>
                                 <button class="btns" onclick="window.location.href='/student_enrollment.aspx'">
-                                    Go to Your Website Dashboard
+                                    Click To View The Student Details
                                 </button>
                             </div>
 
                             <div class="cards card-1">
                                 <img src="https://img.icons8.com/dusk/64/000000/smm.png" />
                                 <h2>Student Id Card Generation</h2>
-                                <p>Click here to view & manage your social media accounts.</p>
-                                <button class="btns" onclick="window.location.href='https://app.socialpilot.co/client/link/index'">
-                                    Go To Your Social Media Dashboard
+                                <button class="btns" onclick="window.location.href='/student_enrollment.aspx'">
+                                    Click To Generate The Student ID Card
                                 </button>
                             </div>
 
                             <div class="cards card-1">
                                 <img src="https://img.icons8.com/dusk/50/000000/task.png" />
                                 <h2>Student Parent Information</h2>
-                                <p>Student Parent Information</p>
-                                <button class="btns" onclick="window.location.href='/your-project'">View Your Project(s)</button>
+                                <button class="btns" onclick="window.location.href='/your-project'">Parent Details</button>
 
                             </div>
                             <div class="cards card-1">
                                 <img src="https://img.icons8.com/dusk/64/000000/calendar.png" />
                                 <h2>Student Deletion From DataBase</h2>
-                                <p>Click here to view your tasks, events, and appointments.</p>
-                                <button class="btns" onclick="window.location.href='/your-calendar'">View Your Calendar</button>
+                                <button class="btns" onclick="window.location.href='/your-calendar'">Student Deletion</button>
                             </div>
 
                            

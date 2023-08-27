@@ -301,6 +301,8 @@
                             <div class="button input-box">
                                 <asp:Button ID="btnLogin" runat="server" Text="Submit" />
                             </div>
+                            <div class="text sign-up-text">Are You a Teacher?
+                                <asp:Label ID="Label3" runat="server" AssociatedControlID="flip" Text="Teacher Login" CssClass="pointer"></asp:Label></div>
                         </div>
                     </div>
                     <div class="signup-form">
@@ -314,14 +316,11 @@
                                 <i class="fas fa-lock"></i>
                                 <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" placeholder="Enter your password"></asp:TextBox>
                             </div>
-                            <div class="text"><a href="#">Forgot password?</a></div>
                             <div class="button input-box">
-                                <asp:Button ID="Button1" runat="server" Text="Submit" />
+                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
                             </div>
-                            <div class="text sign-up-text">Are You a Student?
-                                <asp:Label ID="Label1" runat="server" AssociatedControlID="flip" Text="Student Login" CssClass="pointer"></asp:Label></div>
-                            <div class="text sign-up-text">Are you Teacher Not Have an Account?  <a style="color: #5b13b9;" href="adding_teacher.aspx">
-                                <asp:Label ID="Label2" runat="server" AssociatedControlID="flip" Text="Signup here" CssClass="pointer"></asp:Label></a></div>
+                            <div class="text sign-up-text">Are You a Admin?
+                                <asp:Label ID="Label1" runat="server" AssociatedControlID="flip" Text="Admin Login" CssClass="pointer"></asp:Label></div>
                         </div>
                     </div>
                 </div>

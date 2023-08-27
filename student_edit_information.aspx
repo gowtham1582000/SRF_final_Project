@@ -35,9 +35,9 @@
 
         .custom-button {
             background-color: white;
-            color: #007bff;
+            color: #198754;
             border-radius: 15px;
-            border: 2px solid #007bff;
+            border: 2px solid #198754;
             text-align: center;
             text-decoration: none;
             padding: 5px 10px;
@@ -119,8 +119,12 @@
                 background-color: #0056b3; /* Darker blue on hover */
             }
     </style>
+
+
 </head>
 <body>
+    <!-- Your HTML content here -->
+
     <form id="form1" runat="server">
         <div class="container mt-4">
             <div class="row">
@@ -134,8 +138,8 @@
                 <div class="col-md-9 mb-2">
                     <div class="form-group">
                         <div class="d-flex justify-content-end" style="margin-top: 20px">
-                            <asp:Button ID="btnView" runat="server" Text="Previous" CssClass="custom-button" />
-                            <asp:Button ID="btnUpload" runat="server" Text="Next" CssClass="custom-button" />
+                            <asp:Button ID="btnView" runat="server" Text="Previous" OnClick="btnView_Click1" CssClass="custom-button" />
+                            <asp:Button ID="btnUpload" runat="server" Text="Next" OnClick="btnUpload_Click" CssClass="custom-button" />
                         </div>
                     </div>
                 </div>
@@ -160,7 +164,9 @@
                 </div>
                 <div class="col-md-2 col-3 custom-col">
                     <strong>Current Class:</strong><br />
-                    <asp:Label ID="currentClassLabel" runat="server" Text="XI A" />
+                    <asp:Label ID="Labelclass" runat="server" Text="Label"></asp:Label>
+
+
                 </div>
             </div>
 
@@ -168,7 +174,7 @@
         <div class="container mt-4">
             <ul class="nav nav-tabs" id="myTabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" data-bs-toggle="tab" href="#tab1">ENROLLEMENT</a>
+                    <a class="nav-link active" aria-current="page" data-bs-toggle="tab" id="tab0" href="#tab1">ENROLLEMENT</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="tab" href="#tab3">PHOTO</a>
@@ -261,12 +267,12 @@
                             <div class="mb-3">
                                 <label class="form-label">Minority</label>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="form-check">
                                             <asp:RadioButton ID="minorityRadio1" runat="server" CssClass="form-check-input" GroupName="minorityRadio" Text="Yes" />
                                         </div>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-2">
                                         <div class="form-check">
                                             <asp:RadioButton ID="minorityRadio2" runat="server" CssClass="form-check-input" GroupName="minorityRadio" Text="No" />
                                         </div>
@@ -312,11 +318,7 @@
                                 <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Insert" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button4" runat="server" Text="Cancel" CssClass="custom-button" />
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -416,17 +418,12 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="mb-3">
-                                <asp:Button ID="Button13" runat="server" OnClick="Button13_Click" Text="Insert" CssClass="custom-button" />
+                                <asp:Button ID="Button13" runat="server" OnClick="Button13_Click" Text="Update" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button14" runat="server" Text="Cancel" CssClass="custom-button" />
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
-
                 <div id="tab3" class="tab-pane fade">
                     <div class="container mt-4">
                         <div class="row">
@@ -447,14 +444,10 @@
                         <div class="row">
                             <div class="col-md-1">
                                 <div class="mb-3">
-                                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insert" CssClass="custom-button" />
+                                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update" CssClass="custom-button" />
                                 </div>
                             </div>
-                            <div class="col-md-1">
-                                <div class="mb-3">
-                                    <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="custom-button" />
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -510,17 +503,12 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="mb-3">
-                                <asp:Button ID="Button15" runat="server" OnClick="Button15_Click" Text="Insert" CssClass="custom-button" />
+                                <asp:Button ID="Button15" runat="server" OnClick="Button15_Click" Text="Update" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button16" runat="server" Text="Cancel" CssClass="custom-button" />
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-
                 <div id="tab5" class="tab-pane fade">
                     <div class="row">
                         <div class="col-md-4">
@@ -563,17 +551,12 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="mb-3">
-                                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Insert" CssClass="custom-button" />
+                                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Update" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button6" runat="server" Text="Cancel" CssClass="custom-button" />
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
-
                 <div id="tab6" class="tab-pane fade">
                     <div class="row">
                         <div class="col-md-4">
@@ -618,16 +601,14 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="mb-3">
-                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Insert" CssClass="custom-button" />
+                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Update" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button8" runat="server" Text="Cancel" CssClass="custom-button" />
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
+
+
 
                 <div id="tab7" class="tab-pane fade">
                     <div class="row">
@@ -672,30 +653,29 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="mb-3">
-                                <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Insert" CssClass="custom-button" />
+                                <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Update" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button10" runat="server" Text="Cancel" CssClass="custom-button" />
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
 
+
                 <div id="tab8" class="tab-pane fade">
+                    <div class="row">
+                        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="docType" class="form-label">Document Type</label>
                                 <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" Text="Birth Certificate"/>
-
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="docNumber" class="form-label">Document Number</label>
-                                <asp:TextBox ID="docNumber" runat="server" CssClass="form-control" />
+                                <asp:TextBox ID="docNumber" runat="server" CssClass="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -703,13 +683,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="issueDate" class="form-label">Issue Date</label>
-                                <asp:TextBox ID="issueDate" runat="server" CssClass="form-control" TextMode="Date" />
+                                <asp:TextBox ID="issueDate" runat="server" CssClass="form-control" TextMode="Date"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="expiryDate" class="form-label">Expiry Date</label>
-                                <asp:TextBox ID="expiryDate" runat="server" CssClass="form-control" TextMode="Date" />
+                                <asp:TextBox ID="expiryDate" runat="server" CssClass="form-control" TextMode="Date"/>
                             </div>
                         </div>
                     </div>
@@ -717,7 +697,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="docFile" class="form-label">Upload Document</label>
-                                <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" />
+                                <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control"/>
                             </div>
                         </div>
                     </div>
@@ -725,8 +705,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="docType" class="form-label">Document Type</label>
-                                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" Text="Community Certificate"/>
-
+                                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" Text="Community Certificate" />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -761,19 +740,83 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="mb-3">
-                                <asp:Button ID="Button11" runat="server" OnClick="Button11_Click" Text="Insert" CssClass="custom-button" />
+                                <asp:Button ID="Button11" runat="server" OnClick="Button11_Click" Text="Update" CssClass="custom-button" />
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="mb-3">
-                                <asp:Button ID="Button12" runat="server" Text="Cancel" CssClass="custom-button" />
+                      
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <%--                 <div id="tab8" class="tab-pane fade">
+                    <div class="ad">
+                        <div class="container mt-3">
+                            <div class="row jumbotron box8">
+                                <div class="col-sm-12">
+                                    <div class="text-end mb-3">
+                                        <asp:Button ID="adddoc" runat="server" Text="ADD NEW DOCUMENT" onclick="adddoc_Click" CssClass="btn btn-warning" />
+                                    </div>
+                                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
+                                        <Columns>
+                                            <asp:BoundField DataField="std_birthdocType" HeaderText="std_birthdocType" SortExpression="std_birthdocType"></asp:BoundField>
+                                            <asp:BoundField DataField="std_birthdocNumber" HeaderText="std_birthdocNumber" SortExpression="std_birthdocNumber"></asp:BoundField>
+                                            <asp:BoundField DataField="std_birthissueDate" HeaderText="std_birthissueDate" SortExpression="std_birthissueDate"></asp:BoundField>
+                                            <asp:BoundField DataField="std_birthexpiryDate" HeaderText="std_birthexpiryDate" SortExpression="std_birthexpiryDate"></asp:BoundField>
+                                        </Columns>
+                                    </asp:GridView>
+
+                                    <asp:SqlDataSource runat="server" ID="SqlDataSource2" ConnectionString='<%$ ConnectionStrings:admin %>' SelectCommand="SELECT [std_birthdocType], [std_birth], [std_birthdocNumber], [std_birthissueDate], [std_birthexpiryDate] FROM [studentInformation]"></asp:SqlDataSource>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab" id="addTab" style="display: none;">
+                    <div class="container mt-3">
+                        <div class="row custom-jumbotron custom-box">
+                            <div class="col-sm-12">
+                                <h2 class="text-center mb-4">ADD NEW DOCUMENT</h2>
+                                <div class="form-group">
+                                    <label for="newFileType">File Type</label>
+                                    <input class="form-control" type="text" id="newFileType" runat="server" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="newFileDescription">File Description</label>
+                                    <input class="form-control" type="text" id="newFileDescription" runat="server" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="newDocumentType">Document Type</label>
+
+                                    <asp:DropDownList ID="doctype" runat="server">
+                                        <asp:ListItem>jpg</asp:ListItem>
+                                        <asp:ListItem>png</asp:ListItem>
+                                        <asp:ListItem>jpeg</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newComments">Comments</label>
+                                    <textarea class="form-control" runat="server" id="newComments" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newFileUpload">Upload File</label>
+                                    <asp:FileUpload ID="uploaddoc" runat="server" />
+                                </div>
+                                <div class="text-center">
+                                    <asp:Button ID="ins" runat="server" CssClass="btn btn-primary" OnClick="ins_Click" Text="Insert" />
+                                    <asp:Button ID="cancelBtn" runat="server" CssClass="btn btn-dark" OnClick="cancelBtn_Click" Text="Cancel" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </div>--%>
+
+
+
 
 
         <!-- Bootstrap JS -->
@@ -798,9 +841,31 @@
                 activeTabPane.classList.add('show', 'active');
             }
         </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#adddoc").click(function () {
+                    // Hide the content associated with href "#tab1"
+                    $("#tab1").hide();
+                    $("#addTab").show();
+                    $("#tab8").hide();
+                    return false
+                });
+                $('#cancelBtn').click(function () {
+                    $('#addTab').hide();
+                    $('#tab1').show();
+                    $('#tab8').show();
+                    return false
+                });
+            });
 
 
-
+        </script>
+        <%--  $('#adddoc').click(function () {
+            $('#documentsTab').hide();
+            $('#addTab').show();
+            $('#studentTab').hide(); 
+            return false;--%>
     </form>
 </body>
 </html>

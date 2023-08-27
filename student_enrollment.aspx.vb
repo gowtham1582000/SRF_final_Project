@@ -105,21 +105,12 @@ Public Class student_enrollment
         End Using
     End Sub
 
-    Protected Sub btnView_Click2(sender As Object, e As EventArgs)
+    Protected Sub btnView1_Click(sender As Object, e As EventArgs)
         Dim btnView As LinkButton = DirectCast(sender, LinkButton)
         Dim studentAdmin As String = btnView.CommandArgument
         Dim rowIndex As Integer = CType(btnView.NamingContainer, GridViewRow).RowIndex
-
-        Dim studentNameLabel As Label = CType(GridView1.Rows(rowIndex).FindControl("lblFullName"), Label)
-        Dim studentName As String = studentNameLabel.Text
-        Dim admissionNumber As String = GridView1.Rows(rowIndex).Cells(2).Text ' Assuming std_applicationno is the 3rd column (index 2)
-        Dim studentClass As String = GridView1.Rows(rowIndex).Cells(3).Text ' Assuming std_class is the 4th column (index 3)
-        Dim status As String = GridView1.Rows(rowIndex).Cells(5).Text
-        Session("name") = studentName
-        Session("satus") = status
-        Session("admission") = admissionNumber
-        Session("class") = studentClass
-        Response.Redirect("student_edit_information.aspx")
+        Dim admissionNumber As String = GridView1.Rows(rowIndex).Cells(2).Text
+        Session("admission1") = admissionNumber
+        Response.Redirect("student_id_card.aspx")
     End Sub
-
 End Class

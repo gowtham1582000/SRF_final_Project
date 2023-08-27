@@ -35,19 +35,10 @@
 <body>
     <header>
         <div class="logosec">
-            <div class="logo" style="color: #5500cb">Student DashBoard</div>
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
-                class="icn menuicn" id="menuicn" alt="menu-icon" />
+            <div class="logo" style="color: #5500cb">Admin Dashboard</div>
+            
         </div>
-        <div class="message">
-            <div class="icon-container">
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="" />
-                <div class="message-content">
-                    <p>This is your message content. You can add text here.</p>
-                    <a href="#" class="message-link">Read More</a>
-                </div>
-            </div>
-        </div>
+       
     </header>
 </body>
 </html>
