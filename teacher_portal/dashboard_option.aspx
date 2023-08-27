@@ -46,7 +46,7 @@
             <div class="nav-option logout">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png"
                     class="nav-img" alt="logout" />
-                <h3 style="color: black"><a href="student_teacher_login.aspx">Student Details</a></h3>
+                <h3 style="color: black"><a href="student_teacher_login.aspx">Log Out</a></h3>
             </div>
         </div>
     </nav>
