@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="student_profile.aspx.vb" Inherits="SRF_final_Project.student_profile" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="teacher_profile.aspx.vb" Inherits="SRF_final_Project.teacher_profile" %>
 
 <!DOCTYPE html>
 <html lang="en">

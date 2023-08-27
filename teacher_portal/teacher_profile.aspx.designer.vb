@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class student_profile
+Partial Public Class teacher_profile
 
     '''<summary>
     '''studentName control.

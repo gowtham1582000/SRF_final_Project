@@ -40,7 +40,7 @@ Public Class admin_login_page
     Function IsValidUser1(username1 As String, password1 As String) As Boolean
         Dim isValid As Boolean = False
         Using connection As New SqlConnection(conn1)
-            Dim query As String = "SELECT * FROM Teachers WHERE TeacherID = @Username AND Password = @Password"
+            Dim query As String = "SELECT * FROM Teachers WHERE email = @Username AND Password = @Password"
             Using command As New SqlCommand(query, connection)
                 command.Parameters.AddWithValue("@Username", username1)
                 command.Parameters.AddWithValue("@Password", password1)
@@ -59,7 +59,8 @@ Public Class admin_login_page
         Dim username As String = TextBox1.Text
         Dim password As String = TextBox2.Text
         If IsValidUser1(username, password) Then
-            FormsAuthentication.RedirectFromLoginPage(username, False)
+            Session("email") = username
+            Response.Redirect("/teacher_portal/teacher_profile.aspx")
         Else
             ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Invalid UserName And Password');", True)
         End If
