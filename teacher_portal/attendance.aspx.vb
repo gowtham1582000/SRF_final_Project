@@ -12,7 +12,6 @@ Public Class attendance
     Protected Sub attendance()
         Using connection As New SqlConnection(conn)
             connection.Open()
-
             Dim query As String = "SELECT StudentID,concat(FirstName,' ',LastName) as StudentName,class from Students"
             Dim adapter As New SqlDataAdapter(query, connection)
             adapter.Fill(attendanceDataSet)
@@ -55,5 +54,8 @@ Public Class attendance
         Next
         Dim builder As New SqlCommandBuilder(adapter)
         adapter.Update(ds)
+        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Attendance Saved Successfully.');", True)
+
     End Sub
+
 End Class

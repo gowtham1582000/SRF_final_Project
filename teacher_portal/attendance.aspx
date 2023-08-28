@@ -10,7 +10,7 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous">
     </script>
-   
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/style.css" />
     <style>
@@ -22,26 +22,29 @@
             color: White;
             transition: color 0.3s ease;
         }
+
         .grid-container {
             margin-top: 20px;
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #fff;
         }
+
         .gridview {
             width: 50%;
         }
-        .gridview th,
-        .gridview td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
 
-        .gridview th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
+            .gridview th,
+            .gridview td {
+                padding: 10px;
+                border: 1px solid #ccc;
+                text-align: left;
+            }
+
+            .gridview th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
 
         /* Style for CheckBoxes in GridView */
         .checkbox-label {
@@ -65,18 +68,17 @@
             transition: background-color 0.3s;
         }
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
     </style>
-     <script> 
-         $(function () {
-             $("#header").load("dashboard_header_teacher.aspx");
-             $("#options").load("dashboard_option.aspx");
-         });
+    <script> 
+        $(function () {
+            $("#header").load("dashboard_header_teacher.aspx");
+            $("#options").load("dashboard_option.aspx");
+        });
 
-     </script>
+    </script>
 </head>
 <body>
     <form id="form2" runat="server">
