@@ -26,8 +26,15 @@ Public Class student_performance
         End Using
     End Sub
     Protected Sub btnGenerateReport_Click(sender As Object, e As EventArgs) Handles btnGenerateReport.Click
-        Dim selectedStudentID As Integer = Convert.ToInt32(txtStudentID.Value)
-        Dim selectedMarkID As Integer = Convert.ToInt32(Text1.Value)
+        Dim selectedStudentID As Integer
+        Dim selectedMarkID As Integer
+        Try
+            selectedStudentID = Convert.ToInt32(txtStudentID.Value)
+            selectedMarkID = Convert.ToInt32(Text1.Value)
+        Catch ex As Exception
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Please Enter the Student Id and Mark ID.');", True)
+        End Try
+
 
         Using connection As New SqlConnection(conn)
             connection.Open()
@@ -77,8 +84,16 @@ Public Class student_performance
 
     Protected Sub GridViewStudents_SelectedIndexChanged(sender As Object, e As EventArgs) Handles GridViewStudents.SelectedIndexChanged
         Dim selectedRow As GridViewRow = GridViewStudents.SelectedRow
-        Dim studentID As Integer = Convert.ToInt32(selectedRow.Cells(0).Text)
-        Dim markID As Integer = Convert.ToInt32(selectedRow.Cells(2).Text)
+        Dim studentID As Integer
+        Dim markID As Integer
+        Try
+            studentID = Convert.ToInt32(selectedRow.Cells(0).Text)
+            markID = Convert.ToInt32(selectedRow.Cells(2).Text)
+        Catch ex As Exception
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Please Select the Values With Student Id and Mark ID.');", True)
+
+        End Try
+
         Using connection As New SqlConnection(conn)
             connection.Open()
             Dim query As String = "SELECT tamil, science, maths, social, english FROM StudentMarks WHERE StudentID = @StudentID AND marks_id = @MarkID"

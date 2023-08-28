@@ -35,7 +35,7 @@ Public Class grade
             Dim txtMarks4 As TextBox = CType(row.FindControl("txtMarks4"), TextBox)
             Dim txtMarks5 As TextBox = CType(row.FindControl("txtMarks5"), TextBox)
             Dim newRow As DataRow = ds.Tables(0).NewRow()
-            Dim marks_id As Integer = txtMarks.Text
+            Dim marks_id As String = txtMarks.Text
             Dim tamilMarks As String = txtMarks1.Text
             Dim scienceMarks As String = txtMarks2.Text
             Dim mathsMarks As String = txtMarks3.Text
@@ -52,8 +52,11 @@ Public Class grade
             newRow("english") = englishMarks
             ds.Tables(0).Rows.Add(newRow)
         Next
+
         adapter.Update(ds)
         grade()
+        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Please Enter the Student Id and Mark ID.');", True)
+
     End Sub
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click

@@ -21,7 +21,7 @@
             <div class="nav-option option1">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182148/Untitled-design-(29).png"
                     class="nav-img" alt="dashboard" />
-                <h3><a href="student_profile.aspx">Profile</a></h3>
+                <h3><a href="teacher_profile.aspx">Profile</a></h3>
             </div>
             <div class="nav-option option1">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182148/Untitled-design-(29).png"
@@ -46,7 +46,7 @@
             <div class="nav-option logout">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png"
                     class="nav-img" alt="logout" />
-                <h3 style="color: black"><a href="student_teacher_login.aspx">Log Out</a></h3>
+                <h3 style="color: black"><a href="/admin_login_page.aspx">Log Out</a></h3>
             </div>
         </div>
     </nav>

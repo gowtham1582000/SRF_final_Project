@@ -223,6 +223,7 @@ Public Class student_edit_information
         If ds.Tables.Contains(tableName) AndAlso ds.Tables(tableName).Rows.Count > 0 Then
             Dim row As DataRow = ds.Tables(tableName).Rows(0)
         End If
+        ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
 
     End Sub
 
@@ -247,6 +248,8 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@SecondaryMobileNumber", Mno4.Text)
             adapter.SelectCommand.Parameters.AddWithValue("@SecondaryEmail", email5.Text)
             adapter.Fill(ds, tableName)
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
+
         End Using
     End Sub
 
@@ -265,6 +268,8 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@ParentMobileNumber", parentMobile.Text)
             adapter.SelectCommand.Parameters.AddWithValue("@ParentEmail", parentEmail.Text)
             adapter.Fill(ds, tableName)
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
+
         End Using
 
     End Sub
@@ -283,6 +288,8 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@SchoolCollegeName", schoo.Text)
             adapter.SelectCommand.Parameters.AddWithValue("@StandardCourseName", standard.Text)
             adapter.Fill(ds, tableName)
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
+
         End Using
     End Sub
 
@@ -301,12 +308,14 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@Height", Integer.Parse(height.Text))
             adapter.SelectCommand.Parameters.AddWithValue("@Weight", Integer.Parse(weight.Text))
             adapter.Fill(ds, tableName)
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
+
         End Using
     End Sub
 
     Protected Sub Button9_Click(sender As Object, e As EventArgs)
         Dim ds As New DataSet()
-        Dim tableName As String = "StudentInformationTable"
+        Dim tableName As String = "studentInformation"
 
         Using connection As New SqlConnection(conn)
             Dim adapter As New SqlDataAdapter()
@@ -318,6 +327,8 @@ Public Class student_edit_information
             adapter.SelectCommand.Parameters.AddWithValue("@PreferredBeverage", preferredBeverage.SelectedValue)
             adapter.SelectCommand.Parameters.AddWithValue("@SpecialInstructions", specialInstructions.Text)
             adapter.Fill(ds, tableName)
+            ClientScript.RegisterStartupScript(Me.GetType(), "UpdateSuccess", "alert('Successfully Updated the Database');", True)
+
         End Using
     End Sub
 

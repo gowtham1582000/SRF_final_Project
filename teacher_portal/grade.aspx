@@ -138,7 +138,7 @@
                 <SortedDescendingHeaderStyle BackColor="#7E0000" />
             </asp:GridView>
         </div>
-        <asp:Button ID="Button1" runat="server" Text="Save Attendance" />
+        <asp:Button ID="Button1" runat="server" Text="Save The Grades" />
         
                         </div>
                     </div>

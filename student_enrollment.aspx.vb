@@ -113,4 +113,8 @@ Public Class student_enrollment
         Session("admission1") = admissionNumber
         Response.Redirect("student_id_card.aspx")
     End Sub
+
+    Protected Sub btnUpload_Click(sender As Object, e As EventArgs)
+        Response.Redirect("admin_login_page.aspx")
+    End Sub
 End Class

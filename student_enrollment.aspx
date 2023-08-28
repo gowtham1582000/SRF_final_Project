@@ -121,14 +121,15 @@
                         <asp:TextBox ID="dateDropdown" runat="server" TextMode="Date" CssClass="form-control" Height="29px"></asp:TextBox>
                     </div>
                 </div>
-                <div class="col-md-3 mb-1">
+                <div class="col-md-2 mb-1">
                     <div class="form-group">
                         <div class="d-flex justify-content-end" style="margin-top: 20px">
                             <asp:Button ID="btnView" runat="server" Text="View" CssClass="custom-button" />
-                            <asp:Button ID="btnUpload" runat="server" Text="Upload Student Photo" CssClass="custom-button" />
+                            <asp:Button ID="btnUpload" Width="100" OnClick="btnUpload_Click" runat="server" Text="Log Out" CssClass="custom-button" />
                         </div>
                     </div>
                 </div>
+
             </div>
             <br />
             <div class="alert alert-info" role="alert">
