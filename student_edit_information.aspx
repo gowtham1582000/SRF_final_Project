@@ -130,7 +130,7 @@
             <div class="row">
                 <div class="col-md-3 mb-2">
                     <div class="input-group" style="margin-top: 20px">
-                        <span style="font-weight: bold; font-size: 17px">Profile Details </span>&nbsp|&nbsp&nbsp<span style="color: #007bff"> Students List</span>
+                        <span style="font-weight: bold; font-size: 17px">Profile Details </span>&nbsp|&nbsp&nbsp<span style="color: #007bff"><a href="student_enrollment.aspx" style="text-decoration:none">Students List</a></span>
                     </div>
                 </div>
 
